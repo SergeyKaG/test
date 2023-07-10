@@ -1,0 +1,23 @@
+<html>
+<script>
+window.onload = function () {
+    document.open();
+    document.write("<h1>Testing</h1>");
+    if ("getEnvironmentIntegrity" in navigator) {
+	try {
+	    document.write("<h1>Requesting</h1>");
+	    navigator.getEnvironmentIntegrity("Boo").then(
+		(att) => { document.write("Attestation: "+att.encode()); },
+		(err) => { document.write("Error: "); } );
+	} catch(err) {
+	    document.write("Fail: "+err);
+	}
+    } else {
+	document.write("<h1>Not defined</h1>");
+    }
+    document.close();
+}
+</script>
+  <body>
+  </body>
+</html>
